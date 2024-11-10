@@ -1,0 +1,17 @@
+<nav>
+    <ul>
+        {% macro renderMenu(items) %}
+            {% for item in items %}
+                <li>
+                    <a href="/{{lang.code}}/{{item.url}}">{{ item.name }}</a>
+                    {% if item.children %}
+                        <ul class="submenu">
+                            {{ renderMenu(item.children) }}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        {% endmacro %}
+        {{ renderMenu(lang.menus) }}
+    </ul>
+</nav>

@@ -92,7 +92,8 @@ module.exports = {
     new ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
-      'process.env.APP_ENV': JSON.stringify(process.env.APP_NAME)
+      'process.env.APP_NAME': JSON.stringify(process.env.APP_NAME),
+      'process.env.SITE_LINK': JSON.stringify(process.env.SITE_LINK),
     }),
   ],
   module: {

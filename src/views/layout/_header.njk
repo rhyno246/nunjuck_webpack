@@ -1,6 +1,4 @@
 <header>
-    <h2 class="text-center my-3">
-        <a href="/{{lang.code}}/index.html">Home</a>
-        <a href="/{{lang.code}}/about.html">About</a>
-    </h2>
+    <div class="logo"><a href="{{ SITE_LINK }}"><img src="{% static './logo.png' %}" alt="logo"/></a></div>
+    {% include "_menu.njk" %}
 </header>

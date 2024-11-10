@@ -1,15 +1,6 @@
 {% extends "_layout.njk" %}
 {% set title = APP_NAME + " Home Page" %}
 {% block main %}
-    {# <div class="carousel">
-        <img
-                src="{% static './slide-01.jpg'  %}"
-                alt=""
-            />
-    </div> #}
-
-    <div>{{ SITE_LINK }}</div>
-
     {% for item in lang.sliderItems %}
         <div class="slide">
           <img src="{{ item.src }}" alt="{{ item.alt }}">
@@ -19,7 +10,5 @@
           </div>
         </div>
       {% endfor %}
-
-
     <h1>{{ lang.title }} {{ APP_NAME }}</h1>
 {% endblock %}

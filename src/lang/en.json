@@ -2,6 +2,22 @@
     "code": "en",
     "title": "Welcome to My Awesome Site",
     "greeting": "Hello, world!",
+    "menus": [
+        {
+            "name": "Home",
+            "url": "index.html"
+        },
+        {
+            "name": "About",
+            "url": "about.html",
+            "children": [
+                {
+                    "name": "Submenu 1",
+                    "url": "team.html"
+                }
+            ]
+        }
+    ],
     "sliderItems": [
         {
             "src": "https://s1.vnecdn.net/vnexpress/restruct/i/v9519/v2_2019/pc/graphics/logo.svg",
