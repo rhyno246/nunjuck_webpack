@@ -19,6 +19,10 @@ module.exports = {
     children: true,
   },
   entry: {
+    app :{
+      import: "./src/js/app.js",
+      filename: "js/app.[contenthash].js",
+    },
     index: {
       import: "./src/js/index.js",
       filename: "js/index.[contenthash].js",
@@ -42,7 +46,7 @@ module.exports = {
       return new HtmlWebpackPlugin({
         template: "./src/views/pages/index.njk",
         inject: "body",
-        chunks: ["index"],
+        chunks: ["app" , "index"],
         filename: `${lang.code}/index.html`,
         templateParameters : {
           APP_NAME : process.env.APP_NAME,
@@ -56,7 +60,7 @@ module.exports = {
       return new HtmlWebpackPlugin({
         template: "./src/views/pages/about.njk",
         inject: "body",
-        chunks: ["about"],
+        chunks: ["app" ,"about"],
         filename: `${lang.code}/about.html`,
         templateParameters : {
           APP_NAME : process.env.APP_NAME,
@@ -70,7 +74,7 @@ module.exports = {
       template: './src/views/pages/index.njk',
       filename: 'index.html',  
       inject: "body",
-      chunks: ["index"],
+      chunks: ["app" ,"index"],
       templateParameters: {
         APP_NAME : process.env.APP_NAME,
         SITE_LINK : process.env.SITE_LINK,
@@ -92,8 +96,6 @@ module.exports = {
     new ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",
-      'process.env.APP_NAME': JSON.stringify(process.env.APP_NAME),
-      'process.env.SITE_LINK': JSON.stringify(process.env.SITE_LINK),
     }),
   ],
   module: {
@@ -115,11 +117,10 @@ module.exports = {
           }
         ]
       },
-
       {
-        test: /.s?css$/,
+        test: /\.(scss|css)$/,
         use: [
-          MiniCssExtractPlugin.loader, "css-loader", "sass-loader",
+          'style-loader', 'css-loader', 'sass-loader'
         ]
       },
       {
@@ -131,7 +132,7 @@ module.exports = {
         },
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
+        test: /\.(jpe?g|png|gif|svg|webp)$/i,
         type: "asset/resource",
         generator: {
           filename: "img/[hash][ext]",

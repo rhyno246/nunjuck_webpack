@@ -1,6 +1,5 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel";
-import "bootstrap/dist/css/bootstrap.min.css";
 import '../css/page/index.scss';
 import image from '../img/icon.png';
 
