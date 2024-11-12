@@ -1,9 +1,9 @@
 import '../vendor/style.css';
 import '../vendor/main.css';
 
-
 var app = (function ($) {
   function init () {
+    
   }
   return {
     init

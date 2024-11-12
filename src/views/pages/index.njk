@@ -1,14 +1,5 @@
 {% extends "_layout.njk" %}
 {% set title = APP_NAME + " Home Page" %}
 {% block main %}
-    {% for item in lang.sliderItems %}
-        <div class="slide">
-          <img src="{{ item.src }}" alt="{{ item.alt }}">
-          <div class="text">
-            <h2>{{ item.title }}</h2>
-            <p>{{ item.description }}</p>
-          </div>
-        </div>
-      {% endfor %}
-    <h1>{{ lang.title }} <i class="icon-home"></i> {{ APP_NAME }}</h1>
+    <h1>{{ lang.greeting }} </h1>
 {% endblock %}

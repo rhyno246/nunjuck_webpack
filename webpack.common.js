@@ -9,8 +9,8 @@ require('dotenv').config();
 
 
 const languages = [
-  { code: 'en', path: './src/lang/en.json' },
-  { code: 'vi', path: './src/lang/vi.json' },
+  { code: 'en', path: require('./src/lang/en.js') },
+  { code: 'vi', path: require('./src/lang/vi.js') },
 ];
 
 module.exports = {
@@ -42,7 +42,6 @@ module.exports = {
        safe : true
     }),
     ...languages.map(lang => {
-      const langData = JSON.parse(fs.readFileSync(lang.path, 'utf8'));
       return new HtmlWebpackPlugin({
         template: "./src/views/pages/index.njk",
         inject: "body",
@@ -51,12 +50,11 @@ module.exports = {
         templateParameters : {
           APP_NAME : process.env.APP_NAME,
           SITE_LINK : process.env.SITE_LINK,
-          lang : langData
+          lang : lang.path
         },
       });
     }),
     ...languages.map(lang => {
-      const langData = JSON.parse(fs.readFileSync(lang.path, 'utf8'));
       return new HtmlWebpackPlugin({
         template: "./src/views/pages/about.njk",
         inject: "body",
@@ -65,7 +63,7 @@ module.exports = {
         templateParameters : {
           APP_NAME : process.env.APP_NAME,
           SITE_LINK : process.env.SITE_LINK,
-          lang : langData
+          lang : lang.path
         }
       });
     }),
@@ -78,8 +76,8 @@ module.exports = {
       templateParameters: {
         APP_NAME : process.env.APP_NAME,
         SITE_LINK : process.env.SITE_LINK,
-        lang : JSON.parse(fs.readFileSync('./src/lang/vi.json', 'utf8'))
-      },
+        lang : require('./src/lang/vi.js')
+      }
     }),
     new MiniCssExtractPlugin({
       filename: "css/[name].[contenthash].css",
