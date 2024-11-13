@@ -1,5 +1,5 @@
 {% extends "_layout.njk" %}
 {% set title = APP_NAME + " Home Page" %}
 {% block main %}
-    <h1>{{ lang.greeting }} </h1>
+    <h1>{{ lang.greeting | safe  }} </h1>
 {% endblock %}

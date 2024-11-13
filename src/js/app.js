@@ -33,6 +33,8 @@ var app = (function ($) {
     addMetaTag("keywords", "JavaScript, HTML, metadata, dynamic");
     addMetaTag("author", "Jane Doe");
     addProperty("og:title", `${params.siteName || ''} Experienceday | Mitsubishi Motors Vietnam`);
+    $('.container').find('.primary-site').text(params.siteName);
+    $('.link-site').attr ('href' , `${window.location.href}`);
   }
 
   function init () {
